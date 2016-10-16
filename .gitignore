@@ -1,0 +1,15 @@
+# opencart
+
+.htaccess
+/config.php
+streemaster/config.php
+
+!index.html
+
+download/
+image/data/
+image/cache/
+system/cache/
+system/logs/
+
+system/storage/
