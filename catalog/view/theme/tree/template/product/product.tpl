@@ -152,11 +152,23 @@
               
             </li>
             <?php } ?>            
-           <?php
-            if($price<$special){
-$ans= ((($price-$special)/$price)*100);
+<?php
+$price1=substr($price,0,1);                
+if($price1=='$')
+{
+$price2=str_replace( '$', '', $price );
+$special2=str_replace( '$', '', $special );
+}
+else{
+$price2=str_replace( 'Rs', '', $price );
+$special2=str_replace( 'Rs', '', $special );
+}    
+if($price2>$special2){
+$ans= ((($price2-$special2)/$price2)*100);
 $ans=floor($ans);
-}else{$ans='';}?>
+}else{$ans='';}
+
+?>
             <li>
              <?php if($ans!=''){ ?>&nbsp;<span class="web_pertage-off"><?php echo $ans."% Off";?></span><?php } ?>
             </li>

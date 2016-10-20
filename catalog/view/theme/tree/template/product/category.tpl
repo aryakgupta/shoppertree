@@ -57,12 +57,22 @@
       
       <div class="main">
         <div class="row">
-  <?php 
-   foreach ($products as $product) { 
-    if($product['price']<$product['special']){
-$ans= ((($product['price']-$product['special'])/$product['price'])*100);
-$ans=floor($ans);
-}else{$ans='';}?>
+<?php 
+foreach ($products as $product) { 
+    $price1=substr($product['price'],0,1);                
+    if($price1=='$')
+    {
+    $price=str_replace( '$', '', $product['price'] );
+    $special=str_replace( '$', '', $product['special'] );
+    }
+    else{
+    $price=str_replace( 'Rs', '', $product['price'] );
+    $special=str_replace( 'Rs', '', $product['special'] );
+    }    
+    if($price>$special){
+    $ans= ((($price-$special)/$price)*100);
+    $ans=floor($ans);
+    }else{$ans='';} ?>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
     
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" />

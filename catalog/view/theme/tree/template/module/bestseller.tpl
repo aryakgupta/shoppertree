@@ -8,8 +8,20 @@
 <div class="main">
   <?php 
    foreach ($products as $product) { 
-    if($product['price']<$product['special']){
-$ans= ((($product['price']-$product['special'])/$product['price'])*100);
+               $price1=substr($product['price'],0,1);                
+                if($price1=='$')
+                {
+                  $price=str_replace( '$', '', $product['price'] );
+
+                 $special=str_replace( '$', '', $product['special'] );
+                }
+                else{
+                  $price=str_replace( 'Rs', '', $product['price'] );
+                  $special=str_replace( 'Rs', '', $product['special'] );
+                }
+               
+if($price>$special){
+$ans= ((($price-$special)/$price)*100);
 $ans=floor($ans);
 }else{$ans='';}?>
   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -40,14 +52,24 @@ $ans=floor($ans);
 <div class="complete-look">
   <h1>New Arrival <!-- <a href="#">View All</a> --></h1>
   <ul>
-  <?php foreach ($products as $product) { 
-if($product['price']<$product['special']){
-$ans= ((($product['price']-$product['special'])/$product['price'])*100);
+<?php foreach ($products as $product) { 
+                $price1=substr($product['price'],0,1);                
+                if($price1=='$')
+                {
+                  $price=str_replace( '$', '', $product['price'] );
+                  $special=str_replace( '$', '', $product['special'] );
+                }
+                else{
+                  $price=str_replace( 'Rs', '', $product['price'] );
+                  $special=str_replace( 'Rs', '', $product['special'] );
+                }    
+if($price>$special){
+$ans= ((($price-$special)/$price)*100);
 $ans=floor($ans);
 }else{$ans='';}
     ?>
           <li><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" with="553" height="570" />
-          <figcaption><?php echo $product['name']; ?></figcaption>
+          <figcaption><?php echo substr($product['name'], 0,15); ?>...</figcaption>
         <figcaption>
         <?php if (!$product['special']) { ?>
         <?php echo $product['price']; ?>

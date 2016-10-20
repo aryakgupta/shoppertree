@@ -42,6 +42,7 @@
    <script src="<?php echo HTTP_SERVER ?>catalog/view/js/custom.js"></script>
    <?php echo $google_analytics; ?>
    </head>
+   
 <body>
 <div class="n_wrap">
 <!---header Start-->
@@ -77,6 +78,8 @@
 <div class="col-sm-4 col-lg-4 col-xs-12 col-md-4">
 <div class="profile">
 <ul>
+  <li><?php echo $currency; ?>
+    <?php echo $language; ?></li>
 <?php if ($logged) { ?>
             <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
             <!-- <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li> -->
@@ -93,8 +96,7 @@
 
 </ul>
 
-<?php echo $currency; ?>
-    <?php echo $language; ?>
+
 </div>
 </div>
 </div>
