@@ -92,6 +92,9 @@
 
 
 </ul>
+
+<?php echo $currency; ?>
+    <?php echo $language; ?>
 </div>
 </div>
 </div>
@@ -110,7 +113,6 @@
   <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $childrens) { ?>
 <ul>
 <?php 
-echo count($childrens);
 foreach ($childrens as $child) { ?>
                 <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
                 <?php } ?>
@@ -149,12 +151,12 @@ foreach ($childrens as $child) { ?>
 <div class="submenu_partq">
 <!-- <div><a href="<?php //echo $category['href']; ?>"><?php //echo $text_all; ?> <?php //echo $category['name']; ?></a></div> -->
 <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
- <div class="col-sm-6 col-lg-6 col-md-6">
+ <div class="col-lg-6 col-sm-6 col-md-6">
 <ul type="disc">
 <?php 
 
 foreach ($children as $child) { ?>
-                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                <li><a href="<?php echo $child['href']; ?>"> <i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $child['name']; ?></a></li>
                 <?php } ?>
 
 </ul>

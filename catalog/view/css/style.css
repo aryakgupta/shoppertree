@@ -21,11 +21,11 @@ header { margin:0; padding:0; width:100%; float:left; height:auto;}
 .navigation ul li { margin:0; list-style:none; display:inline-block; }
 .navigation ul li a { margin:0; padding:12px 24px; font-size:13px; color:#fff; display:block; text-transform:uppercase;}
 .navigation ul li a:hover,.navigation ul li a:active,.navigation ul li a.active { background:#fff; color:#000;}
-.submenu { margin:0; padding:10px 20px; min-width:1150px; height:auto; position:absolute; top:45; z-index:999; background:#fff; display:none; left:0;}
-.submenu_partq { margin:0; padding:0; float:left; width:25%;}
+.submenu { margin:0; padding:10px 20px; min-width:1150px; height:auto; position:absolute; top:45; z-index:999; background:#fff; display:none; left:0; box-shadow: 0px 1px 1px 0px #000;}
+.submenu_partq { margin:0; padding:0; float:left; width:100%;}
 .submenu_partq p { font-size:15px; color:#dc0000; margin:0;}
 .submenu_partq ul { margin:0; padding:0;}
-.submenu_partq ul li { margin:0; padding:0; list-style:none; display:block;}
+.submenu_partq ul li { margin:0; padding:2px 0; list-style:none; display:block;}
 .submenu_partq ul li a { color:#424242; margin:0; padding:0; display:block; font-size:12px;text-transform:capitalize; }
 .mid-content_banner { margin:10px 0 0 0;}
 .left_block { margin:0; padding:0;}

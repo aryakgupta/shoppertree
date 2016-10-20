@@ -63,11 +63,11 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$data['code'] = '';
 		}
 
-		if (isset($this->session->data['comment'])) {
-			$data['comment'] = $this->session->data['comment'];
-		} else {
-			$data['comment'] = '';
-		}
+		// if (isset($this->session->data['comment'])) {
+		// 	$data['comment'] = $this->session->data['comment'];
+		// } else {
+		// 	$data['comment'] = '';
+		// }
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/shipping_method.tpl')) {
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/shipping_method.tpl', $data));
@@ -128,7 +128,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 		if (!$json) {
 			$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
 
-			$this->session->data['comment'] = strip_tags($this->request->post['comment']);
+			//$this->session->data['comment'] = strip_tags($this->request->post['comment']);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

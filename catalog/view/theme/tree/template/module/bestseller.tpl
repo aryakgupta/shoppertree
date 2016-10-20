@@ -8,7 +8,7 @@
 <div class="main">
   <?php 
    foreach ($products as $product) { 
-    if($product['price']<$product['special'] and $product['price'] > 0){
+    if($product['price']<$product['special']){
 $ans= ((($product['price']-$product['special'])/$product['price'])*100);
 $ans=floor($ans);
 }else{$ans='';}?>
