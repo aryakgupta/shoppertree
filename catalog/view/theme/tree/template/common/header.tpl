@@ -69,11 +69,11 @@
 </div>
 </div>
 <div class="col-md-5 col-xs-12 col-lg-5 col-sm-5">
-<div class="search">  
+<!-- <div class="search">  
 <input type="text" name="search" value="" placeholder="Search a Product" class="input-txt"/>
-<input type="button" value="Search" class="input-submit"/>
-<?php //echo $search; ?>
-</div>
+<input type="button" value="Search" class="input-submit"/> -->
+<?php echo $search; ?>
+<!-- </div> -->
 </div>
 <div class="col-sm-4 col-lg-4 col-xs-12 col-md-4">
 <div class="profile">
