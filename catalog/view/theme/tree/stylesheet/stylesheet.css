@@ -18,7 +18,7 @@ h1 {
 	font-size: 33px;
 }
 h2 {
-	font-size: 27px;
+	font-size: 20px;
 }
 h3 {
 	font-size: 21px;
@@ -128,7 +128,8 @@ div.required .control-label:before {
 }
 /* search */
 #search {
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
+	margin-bottom: 0px;
 }
 #search .input-lg {
 	height: 40px;
@@ -147,7 +148,7 @@ div.required .control-label:before {
 }
 #cart > .btn {
 	font-size: 12px;
-	line-height: 18px;
+	line-height: 13px;
 	color: #FFF;
 }
 #cart.open > .btn {
@@ -166,11 +167,13 @@ div.required .control-label:before {
 	z-index: 1001;
 }
 #cart .dropdown-menu {
-	min-width: 100%;
+	/*min-width: 100%;*/
+	min-width: 170px;
 }
 	@media (max-width: 478px) {
 		#cart .dropdown-menu {
-			width: 100%;
+			/*width: 100%;*/
+			width: auto;
 		}
 	}
 #cart .dropdown-menu table {
@@ -186,7 +189,7 @@ div.required .control-label:before {
 		}
 	}
 #cart .dropdown-menu li p {
-	margin: 20px 0;
+	margin: 6px 0;
 }
 /* menu */
 #menu {

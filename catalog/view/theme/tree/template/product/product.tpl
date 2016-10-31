@@ -144,7 +144,7 @@
           <ul class="list-unstyled">
             <?php if (!$special) { ?>
             <li>
-              <h2><?php echo $price; ?></h2>
+              <h4><?php echo $price; ?></h4>
             </li>
             <?php } else { ?>
             <li><span style="text-decoration: line-through;"><?php echo $price; ?></span>&nbsp;<?php echo $special; ?></li>
@@ -357,10 +357,23 @@ $ans=floor($ans);
       <div class="row">
   <?php 
    foreach ($products as $product) { 
-    if($product['price']<$product['special']){
-$ans= ((($product['price']-$product['special'])/$product['price'])*100);
+ 
+$price1=substr($price,0,1);                
+if($price1=='$')
+{
+$price2=str_replace( '$', '', $price );
+$special2=str_replace( '$', '', $special );
+}
+else{
+$price2=str_replace( 'Rs', '', $price );
+$special2=str_replace( 'Rs', '', $special );
+}    
+if($price2>$special2){
+$ans= ((($price2-$special2)/$price2)*100);
 $ans=floor($ans);
-}else{$ans='';}?>
+}else{$ans='';}
+
+?>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
     
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" />
