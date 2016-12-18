@@ -162,6 +162,24 @@
       <li><a href="<?php echo $error_log; ?>"><?php echo $text_error_log; ?></a></li>
     </ul>
   </li>
+<?php
+//if($key == 'upload'){ ?>
+    <li><a class="parent"><i class="fa fa-upload fa-fw"></i><span><?php echo 'Upload in bulk '; ?></span></a>
+        <ul>
+          <?php 
+        //foreach($accessPermission as $accessUploadRight){
+        ///$accessUploadRightArrray = explode('/',$accessUploadRight);
+        //if($accessUploadRightArrray[1]=='csvupload'){ ?>
+          <li><a href="<?php echo $bulkupload; ?>"><?php echo "Upload CSV File"; ?></a></li>
+        <?php //} 
+        
+    //}
+    ?>
+    </ul>
+   </li>
+    <?php  //} ?>
+
+
   <li id="reports"><a class="parent"><i class="fa fa-bar-chart-o fa-fw"></i> <span><?php echo $text_reports; ?></span></a>
     <ul>
       <li><a class="parent"><?php echo $text_sale; ?></a>

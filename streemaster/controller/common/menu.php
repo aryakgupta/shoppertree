@@ -79,6 +79,9 @@ class ControllerCommonMenu extends Controller {
 		$data['text_tax_class'] = $this->language->get('text_tax_class');
 		$data['text_tax_rate'] = $this->language->get('text_tax_rate');
 		$data['text_tools'] = $this->language->get('text_tools');
+
+ $data['bulkupload'] = $this->url->link('upload/csvupload', 'token=' . $this->session->data['token'], 'SSL');
+
 		$data['text_total'] = $this->language->get('text_total');
 		$data['text_upload'] = $this->language->get('text_upload');
 		$data['text_tracking'] = $this->language->get('text_tracking');
