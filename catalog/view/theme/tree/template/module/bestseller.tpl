@@ -11,13 +11,17 @@
                $price1=substr($product['price'],0,1);                
                 if($price1=='$')
                 {
-                  $price=str_replace( '$', '', $product['price'] );
-
-                 $special=str_replace( '$', '', $product['special'] );
+                 $priceq=str_replace( '$', '', $product['price'] );
+                  $price=str_replace( ',', '', $priceq );
+                  $specialq=str_replace( '$', '', $product['special'] );
+                  $special=str_replace( ',', '', $specialq );
                 }
                 else{
-                  $price=str_replace( 'Rs', '', $product['price'] );
-                  $special=str_replace( 'Rs', '', $product['special'] );
+	          $priceq=str_replace( 'Rs', '', $product['price'] );
+                  $price=str_replace( ',', '', $priceq );
+                  $specialq=str_replace( 'Rs', '', $product['special'] );
+                  $special=str_replace( ',', '', $specialq );
+                  
                 }
                
 if($price>$special){
@@ -27,7 +31,7 @@ $ans=floor($ans);
   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
     
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" />
-<figcaption><?php echo $product['name']; ?></figcaption>
+<figcaption><?php echo substr($product['name'],0,25).'...'  ; ?></figcaption>
 <figcaption>
         <?php if (!$product['special']) { ?>
         <?php echo $product['price']; ?>
@@ -48,7 +52,7 @@ $ans=floor($ans);
 </div>
 
 </div><!--Web -->
-<!--Mobile-->
+<!-- ----------------------for Mobile-->
 <div class="complete-look">
   <h1>New Arrival <!-- <a href="#">View All</a> --></h1>
   <ul>
@@ -56,12 +60,16 @@ $ans=floor($ans);
                 $price1=substr($product['price'],0,1);                
                 if($price1=='$')
                 {
-                  $price=str_replace( '$', '', $product['price'] );
-                  $special=str_replace( '$', '', $product['special'] );
+                  $priceq=str_replace( '$', '', $product['price'] );
+                  $price=str_replace( ',', '', $priceq );
+                  $specialq=str_replace( '$', '', $product['special'] );
+                  $special=str_replace( ',', '', $specialq );
                 }
                 else{
-                  $price=str_replace( 'Rs', '', $product['price'] );
-                  $special=str_replace( 'Rs', '', $product['special'] );
+                  $priceq=str_replace( 'Rs', '', $product['price'] );
+                  $price=str_replace( ',', '', $priceq );
+                  $specialq=str_replace( 'Rs', '', $product['special'] );
+                  $special=str_replace( ',', '', $specialq );
                 }    
 if($price>$special){
 $ans= ((($price-$special)/$price)*100);

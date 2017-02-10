@@ -18,8 +18,8 @@ public function upload_error($file_name,$vendorid='') {
       if($r==0)
       {
         /// try to checking sheet hvae proper column
-         echo "==".$count=count($data);
-          if($count!=24)
+         echo "=#=".$count=count($data);
+          if($count!=25)
           {
             echo 'csv file is not proper format***';
             exit();
@@ -36,14 +36,15 @@ public function upload_error($file_name,$vendorid='') {
     $model=$data[6];     
     $productDescription=$data[7];
     $price=$data[8];
-    $quantity=$data[9];
-    $image=$data[10];
-    $weight=$data[17];
-    $weighttype=$data[18];
-    $length=$data[19];    
-    $width=$data[20];
-    $height=$data[21];    
-    $tag=$data[22];
+    $finalseling_price=$data[9];
+    $quantity=$data[10];
+    $image=$data[11];
+    $weight=$data[18];
+    $weighttype=$data[19];
+    $length=$data[20];    
+    $width=$data[21];
+    $height=$data[22];    
+    $tag=$data[23];
 
 
     $pattern = '/^\d{1,10}(?:\.\d{1,4})?$/';
@@ -61,7 +62,7 @@ public function upload_error($file_name,$vendorid='') {
             }
            else {
 
-        $categoryIds=$this->getcategory($categoryId,0);
+       $categoryIds=$this->getcategory($categoryId,0);
           $grandfather=$categoryIds;
 
              if($categoryIds==0 || $categoryIds=='')
@@ -71,7 +72,7 @@ public function upload_error($file_name,$vendorid='') {
 
              }
           }
-            
+         
       if ($sub_categoryId=='') {
            $jb=$i+1;
            //$strerror="Product category or subcategory Will not Blank, Please check Row No "."$j";
@@ -89,23 +90,23 @@ public function upload_error($file_name,$vendorid='') {
              }
           } 
 
-        //if (!preg_match($pattern2, $sub_sub_categoryId) || $sub_sub_categoryId=='') {
-          if ($sub_sub_categoryId=='') {
-           $jc=$i+1;
-           //echo $strerror="Product category or meta subcategory Will not Blank, Please check Row No "."$jc";
-           $upload_error[]=array('value13'=>$jc);
-            } 
-             else {
-          $sub_sub_categoryIds=$this->getcategory($sub_sub_categoryId,$father); 
-                   $insertcategory =$sub_sub_categoryIds;
+       
+          // if ($sub_sub_categoryId=='') {
+          //  $jc=$i+1;
           
-             if($insertcategory==0 || $insertcategory=='')
-             {
-             $jc=$i+1;
-             $upload_error[]=array('value13'=>$jc);
+          //  $upload_error[]=array('value13'=>$jc);
+          //   } 
+          //    else {
+          // $sub_sub_categoryIds=$this->getcategory($sub_sub_categoryId,$father); 
+          //          $insertcategory =$sub_sub_categoryIds;
+          
+          //    if($insertcategory==0 || $insertcategory=='')
+          //    {
+          //    $jc=$i+1;
+          //    $upload_error[]=array('value13'=>$jc);
 
-             }
-          }               
+          //    }
+          // }               
 
 
 if ($model=='') {
@@ -114,7 +115,7 @@ if ($model=='') {
    
     } else {
 
-          $model_num=$this->checkModel($model);
+          //$model_num=$this->checkModel($model);
           
              if($model_num>0)
              {
@@ -154,14 +155,14 @@ if ($sku=='') {
              }
           }
 
-if($data[12]==''){
-  $h=$i+1;
-  $upload_error[]=array('value9'=>"Please check attribute row no: ".$h);
-  }
-  else
+// if($data[13]==''){
+//   $h=$i+1;
+//   //$upload_error[]=array('value9'=>"Please check attribute row no: ".$h);
+//   }
+  if($data[13]!='')
       {
          $h=$i+1;
-           $attributes=explode('#',$data[12]);
+           $attributes=explode('#',$data[13]);
 $att_name=array();
             foreach ($attributes as $attribute) {
             $attributes_array = explode('>',$attribute);            
@@ -182,20 +183,20 @@ $att_name=array();
 
 }     
 
-    if ($length=='' || $length==0) {
-    $m=$i+1;
-    $upload_error[]=array('value4'=>$m);
-    }
+    // if ($length=='' || $length==0) {
+    // $m=$i+1;
+    // $upload_error[]=array('value4'=>$m);
+    // }
 
-    if ($width=='' || $width==0) {
-    $n=$i+1;
-    $upload_error[]=array('value5'=>$n);
-    }
+    // if ($width=='' || $width==0) {
+    // $n=$i+1;
+    // $upload_error[]=array('value5'=>$n);
+    // }
 
-    if ($height=='' || $height==0) {
-    $o=$i+1;
-    $upload_error[]=array('value6'=>$o);
-    }
+    // if ($height=='' || $height==0) {
+    // $o=$i+1;
+    // $upload_error[]=array('value6'=>$o);
+    // }
     
     if ($delivery_day=='' || $delivery_day==0) {
     $p=$i+1;
@@ -333,17 +334,17 @@ $counts=count($upload_error);
         $errvalue3[]=$upload_error[$a]['value3'];
       }
 
-      if(!empty($upload_error[$a]['value4'])) {
-        $errvalue4[]=$upload_error[$a]['value4'];
-      }
+      // if(!empty($upload_error[$a]['value4'])) {
+      //   $errvalue4[]=$upload_error[$a]['value4'];
+      // }
 
-      if(!empty($upload_error[$a]['value5'])) {
-        $errvalue5[]=$upload_error[$a]['value5'];
-      }
+      // if(!empty($upload_error[$a]['value5'])) {
+      //   $errvalue5[]=$upload_error[$a]['value5'];
+      // }
 
-      if(!empty($upload_error[$a]['value6'])) {
-        $errvalue6[]=$upload_error[$a]['value6'];
-      }
+      // if(!empty($upload_error[$a]['value6'])) {
+      //   $errvalue6[]=$upload_error[$a]['value6'];
+      // }
 
       if(!empty($upload_error[$a]['value7'])) {
         $errvalue7[]=$upload_error[$a]['value7'];
@@ -366,9 +367,9 @@ $counts=count($upload_error);
       if(!empty($upload_error[$a]['value12'])) {
         $errvalue12[]=$upload_error[$a]['value12'];
       }
-      if(!empty($upload_error[$a]['value13'])) {
-        $errvalue13[]=$upload_error[$a]['value13'];
-      }
+      // if(!empty($upload_error[$a]['value13'])) {
+      //   $errvalue13[]=$upload_error[$a]['value13'];
+      // }
       if(!empty($upload_error[$a]['value14'])) {
         $errvalue14[]=$upload_error[$a]['value14'];
       }
@@ -418,9 +419,9 @@ if(count($errvalue11)>0) {
 if(count($errvalue12)>0) {
   $valuecheck[]='Please check sub category Row No: '.implode(',',$errvalue12);
 }
-if(count($errvalue13)>0) {
-  $valuecheck[]='Please check meta category Row No: '.implode(',',$errvalue13);
-}
+// if(count($errvalue13)>0) {
+//   $valuecheck[]='Please check meta category Row No: '.implode(',',$errvalue13);
+// }
 if(count($errvalue22)>0) {
   $valuecheck[]='Please check product name Row No: '.implode(',',$errvalue22);
 }
@@ -444,15 +445,15 @@ if(count($errvalue19)>0) {
   $valuecheck[]='Please check image name Row No: '.implode(',',$errvalue19);
 }
 
-if(count($errvalue4)>0) {
-  $valuecheck[]='Please check length Row No: '.implode(',',$errvalue4);
-}
-if(count($errvalue5)>0) {
-  $valuecheck[]='Please check width Row No: '.implode(',',$errvalue5);
-}
-if(count($errvalue6)>0) {
-  $valuecheck[]='Please check height Row No: '.implode(',',$errvalue6);
-}
+// if(count($errvalue4)>0) {
+//   $valuecheck[]='Please check length Row No: '.implode(',',$errvalue4);
+// }
+// if(count($errvalue5)>0) {
+//   $valuecheck[]='Please check width Row No: '.implode(',',$errvalue5);
+// }
+// if(count($errvalue6)>0) {
+//   $valuecheck[]='Please check height Row No: '.implode(',',$errvalue6);
+// }
 
 
 if(count($errvalue9)>0) {
@@ -501,7 +502,7 @@ if(count($errvalue23)>0) {
            {
             /// try to checking sheet hvae proper column
                 $count=count($data);
-                 if($count!=24)
+                 if($count!=25)
                  {
                   echo 'csv file is not proper format';
                   exit();
@@ -552,10 +553,10 @@ if(count($errvalue23)>0) {
                    $father=$sub_categoryId;
                   
                 }
-               if($sub_sub_categoryId){
-                   $sub_sub_categoryId=$this->getcategory($sub_sub_categoryId,$father); 
-                   $insertcategory =$sub_sub_categoryId;
-                }
+               // if($sub_sub_categoryId){
+               //     $sub_sub_categoryId=$this->getcategory($sub_sub_categoryId,$father); 
+               //     $insertcategory =$sub_sub_categoryId;
+               //  }
           
              //$status=$this->checkparent($categoryId,$sub_categoryId,$sub_sub_categoryId);
                // exit;
@@ -585,43 +586,45 @@ if(count($errvalue23)>0) {
     $model=$data[6];     
     
     $price=$data[8];
-    $quantity=$data[9];
+    $finalseling_price=$data[9];
+    
+    $quantity=$data[10];
     //$image=$data[10];
     
                    
         
           //$delivery_charges="";
         
-        $image= $imageprefix.$data[10];
+        $image= $imageprefix.$data[11];
         
-        $additional_image=$this->db->escape($data[11]);
+        $additional_image=$this->db->escape($data[12]);
           $imgarray=explode(',',$additional_image);
 
                     
-           if($data[22]!=''){
-           $attributes=explode('#',$data[12]);
+           if($data[13]!=''){
+           $attributes=explode('#',$data[13]);
           // pre($attributes);
 //exit;
            }
            
-                  if($data[13]!=''){
-        $filter=explode(',',$data[13]);
+                  if($data[14]!=''){
+        $filter=explode(',',$data[14]);
          
            }
 
-        $dimendtion=$data[14];
+        $dimendtion=$data[15];
         
-        $size_option=explode(',',$data[15]);
+        $size_option=explode(',',$data[16]);
          
          
-        $color_option=explode(',',$data[16]);
+        $color_option=explode(',',$data[17]);
           
-        $weight=$data[17];
-    $weighttype=$data[18];
-    $length=$data[19];    
-    $width=$data[20];
-    $height=$data[21];    
-    $tag=$data[22];
+        $weight=$data[18];
+    $weighttype=$data[19];
+    $length=$data[20];    
+    $width=$data[21];
+    $height=$data[22];    
+    $tag=$data[23];
           
            
           if($weighttype!='')
@@ -640,13 +643,19 @@ if(count($errvalue23)>0) {
         $keyword = strtolower(str_replace(' ','-', str_replace(array( '\'', '"', ',' , ';', '<', '>','&','#','+','/','(',')','?'),'',$productName)));
        ///data insert into product table
          
-         $isbn=$data["23"];
+         $isbn=$data["24"];
+         //$wash_care=$data["25"];
+         // $neck_coller=$data["26"];
+         // $fabric=$data["27"];
+         // $sleeves=$data["28"];
+         // $occasion=$data["29"];
+         // $pattern=$data["30"];
          
 		 
 
-    echo  $product="INSERT into oc_product set quantity='".$quantity."', sku='".$sku."', upc='', ean='', jan='', isbn='".$isbn."', mpn='', stock_status_id='2', model='".$model."', manufacturer_id='".$manufacturer_id."', image='".$image."', shipping='1', price='".$price."', date_added='".$dateadded."', weight='".$weight."', weight_class_id='".$weight_class_id."', status='2', length='".$length."', width='".$width."', height='".$height."', location='', points='', tax_class_id='', sort_order='', viewed='', date_modified='', minimum=''";
+     $product="INSERT into oc_product set quantity='".$quantity."', sku='".$sku."', upc='', ean='', jan='', isbn='".$isbn."', mpn='', stock_status_id='2', model='".$model."', manufacturer_id='".$manufacturer_id."', image='".$image."', shipping='1', price='".$price."', date_added='".$dateadded."', weight='".$weight."', weight_class_id='".$weight_class_id."', status='2', length='".$length."', width='".$width."', height='".$height."', location='', points='', tax_class_id='', sort_order='', viewed='', date_modified='', minimum=''";
 
-         
+         //exit;='', 
           $this->db->query($product);
           $productId = $this->db->getLastId();
           $productDescriptions=$productDescription;
@@ -806,12 +815,12 @@ if(!empty($imgarray))
               //$sql .= ($first) ? "\n" : ",\n";
               $first = FALSE;
 
-              $attributes_array_value = explode(',',$attributes_array[1]);
+              $attributes_array_value = explode('#',$attributes_array[1]);
               //pre($attributes_array_value);
               for($i=0; $i < count($attributes_array_value); $i++)                             
               {
                 
-                $sql = "INSERT into oc_product_attribute set product_id='".$productId."', attribute_id='".$attribute_id."', language_id='1', text='".trim($attributes_array_value[$i])."'";
+                $sql = "INSERT into oc_product_attribute set product_id='".$productId."', attribute_id='".$attribute_id."', language_id='1', text='".addslashes((trim($attributes_array_value[$i])))."'";
                 $this->db->query($sql);
                 //$sql .= "('$productId','$attribute_id','1','".trim($attributes_array_value[$i])."')";
               }
@@ -1150,7 +1159,7 @@ public function checkModel($name)
        //$category= $this->slug($category, $replacement = '');
          $category=str_replace("&","&amp;",$category);
         
-     $sql=" SELECT d.category_id  FROM oc_category_description as d INNER JOIN oc_category as c ON(d.category_id=c.category_id) WHERE d.name='".$this->db->escape($category)."' AND c.parent_id='".$parent."' LIMIT 1";
+      $sql=" SELECT d.category_id  FROM oc_category_description as d INNER JOIN oc_category as c ON(d.category_id=c.category_id) WHERE d.name='".$this->db->escape($category)."' AND c.parent_id='".$parent."' LIMIT 1";
 
        
       $qry=$this->db->query($sql);

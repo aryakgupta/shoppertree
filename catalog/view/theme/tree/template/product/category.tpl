@@ -59,15 +59,19 @@
         <div class="row">
 <?php 
 foreach ($products as $product) { 
-    $price1=substr($product['price'],0,1);                
+  $price1=substr($product['price'],0,1);                
     if($price1=='$')
     {
-    $price=str_replace( '$', '', $product['price'] );
-    $special=str_replace( '$', '', $product['special'] );
+    $priceq=str_replace( '$', '', $product['price'] );
+    $price=str_replace( ',', '', $priceq );
+    $specialq=str_replace( '$', '', $product['special'] );
+    $special=str_replace( ',', '', $specialq );
     }
     else{
-    $price=str_replace( 'Rs', '', $product['price'] );
-    $special=str_replace( 'Rs', '', $product['special'] );
+    $priceq=str_replace( 'Rs', '', $product['price'] );
+    $price=str_replace( ',', '', $priceq );    	
+    $specialq=str_replace( 'Rs', '', $product['special'] );
+    $special=str_replace( ',', '', $specialq );
     }    
     if($price>$special){
     $ans= ((($price-$special)/$price)*100);
@@ -76,14 +80,14 @@ foreach ($products as $product) {
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
     
       <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" />
-<figcaption><?php echo $product['name']; ?></figcaption>
+<figcaption><?php echo substr($product['name'],0,25).'...'  ; ?></figcaption>
         
         <figcaption>
         <?php if (!$product['special']) { ?>
         <?php echo $product['price']; ?>
         <?php } else { ?>
         <strike><?php echo $product['price']; ?></strike>&nbsp;<?php echo $product['special']; ?>
-        <?php if($ans!=''){ ?>&nbsp;<span class="web_pertage-off"><?php echo $ans."% Off";?></span><?php } ?>
+        <?php if($ans!='' && $ans!=100){ ?>&nbsp;<span class="web_pertage-off"><?php echo $ans."% Off";?></span><?php } ?>
         <?php } ?></figcaption>
       </a></div>
         

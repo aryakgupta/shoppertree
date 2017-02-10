@@ -21,117 +21,45 @@
         <?php } elseif ($column_left || $column_right) { ?>
         <?php $class = 'col-sm-6'; ?>
         <?php } else { ?>
-        <?php $class = 'col-sm-8'; ?>
+        <?php $class = 'col-md-6 col-xs-12 col-lg-6 col-sm-6'; ?>
         <?php } ?>
         <div class="<?php echo $class; ?>">
+       
           <?php if ($thumb || $images) { ?>
-          <ul class="thumbnails">
-            <?php if ($thumb) { ?>
-            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-            <?php } ?>
-            <?php if ($images) { ?>
+          <div class="row">
+            <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"> 
+            
             <?php foreach ($images as $image) { ?>
+            <ul class="thumbnails">
             <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+            </ul>
             <?php } ?>
-            <?php } ?>
+            
+          </div>
+            <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10">         
+            <?php if ($thumb) { ?>
+            <ul class="thumbnails">
+            <li><a class="thumbnail yhumnails" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+            
           </ul>
           <?php } ?>
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
-            <?php if ($attribute_groups) { ?>
-            <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
-            <?php } ?>
-            <?php if ($review_status) { ?>
-            <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
-            <?php } ?>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
-            <?php if ($attribute_groups) { ?>
-            <div class="tab-pane" id="tab-specification">
-              <table class="table table-bordered">
-                <?php foreach ($attribute_groups as $attribute_group) { ?>
-                <thead>
-                  <tr>
-                    <td colspan="2"><strong><?php echo $attribute_group['name']; ?></strong></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-                  <tr>
-                    <td><?php echo $attribute['name']; ?></td>
-                    <td><?php echo $attribute['text']; ?></td>
-                  </tr>
-                  <?php } ?>
-                </tbody>
-                <?php } ?>
-              </table>
-            </div>
-            <?php } ?>
-            <?php if ($review_status) { ?>
-            <div class="tab-pane" id="tab-review">
-              <form class="form-horizontal">
-                <div id="review"></div>
-                <h2><?php echo $text_write; ?></h2>
-                <?php if ($review_guest) { ?>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                    <input type="text" name="name" value="" id="input-name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block"><?php echo $text_note; ?></div>
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label"><?php echo $entry_rating; ?></label>
-                    &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
-                    <input type="radio" name="rating" value="1" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="2" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="3" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="4" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="5" />
-                    &nbsp;<?php echo $entry_good; ?></div>
-                </div>
-                <?php if ($site_key) { ?>
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                      <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
-                    </div>
-                  </div>
-                <?php } ?>
-                <div class="buttons clearfix">
-                  <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
-                  </div>
-                </div>
-                <?php } else { ?>
-                <?php echo $text_login; ?>
-                <?php } ?>
-              </form>
-            </div>
-            <?php } ?>
           </div>
+        
+            
+          
+        </div>
+          <?php } ?>
         </div>
         <?php if ($column_left && $column_right) { ?>
         <?php $class = 'col-sm-6 col-lg-6 col-xs-6 col-md-6'; ?>
         <?php } elseif ($column_left || $column_right) { ?>
         <?php $class = 'col-sm-6 col-lg-6 col-xs-6 col-md-6'; ?>
         <?php } else { ?>
-        <?php $class = 'col-sm-4 col-xs-12 col-lg-4 col-md-4'; ?>
+        <?php $class = 'col-sm-6 col-xs-12 col-lg-6 col-md-6'; ?>
         <?php } ?>
         <div class="<?php echo $class; ?>">
           
-          <h3><?php echo $heading_title; ?></h3>
+          <h3 style="padding:0; margin:0;"><?php echo $heading_title; ?></h3>
           <ul class="list-unstyled">
             <?php if ($manufacturer) { ?>
             <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
@@ -139,15 +67,15 @@
             <li><?php echo $text_model; ?> <?php echo $model; ?></li>
             
             <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
-          </ul>Price:
+          </ul>
           <?php if ($price) { ?>
-          <ul class="list-unstyled">
+          <ul class="list-unstyled" style="margin:0; padding:0;">
             <?php if (!$special) { ?>
             <li>
-              <h4><?php echo $price; ?></h4>
+              <h4>Price: <?php echo $price; ?></h4>
             </li>
             <?php } else { ?>
-            <li><span style="text-decoration: line-through;"><?php echo $price; ?></span>&nbsp;<?php echo $special; ?></li>
+            <li>Price:  <span style="text-decoration: line-through;"><?php echo $price; ?></span>&nbsp;<?php echo $special; ?></li>
             <li>
               
             </li>
@@ -156,12 +84,16 @@
 $price1=substr($price,0,1);                
 if($price1=='$')
 {
-$price2=str_replace( '$', '', $price );
-$special2=str_replace( '$', '', $special );
+$priceq2=str_replace( '$', '', $price );
+$price2=str_replace( ',', '', $priceq2 );
+$specialq2=str_replace( '$', '', $special );
+$special2=str_replace( ',', '', $specialq2 );
 }
 else{
-$price2=str_replace( 'Rs', '', $price );
-$special2=str_replace( 'Rs', '', $special );
+$priceq2=str_replace( 'Rs', '', $price );
+$price2=str_replace( ',', '', $priceq2 );
+$specialq2=str_replace( 'Rs', '', $special );
+$special2=str_replace( ',', '', $specialq2 );
 }    
 if($price2>$special2){
 $ans= ((($price2-$special2)/$price2)*100);
@@ -170,7 +102,7 @@ $ans=floor($ans);
 
 ?>
             <li>
-             <?php if($ans!=''){ ?>&nbsp;<span class="web_pertage-off"><?php echo $ans."% Off";?></span><?php } ?>
+             <?php if($ans!='' && $ans!=100){ ?>&nbsp;<span class="web_pertage-off"><?php echo $ans."% Off";?></span><?php } ?>
             </li>
             
           </ul>
@@ -218,7 +150,7 @@ $ans=floor($ans);
               <label class="control-label"><?php echo $text_option; ?></label>
               <div id="input-option<?php echo $option['product_option_id']; ?>">
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <div class="checkbox">
+                <div class="checkbox" style="display:inline-block; margin:0;">
                   <label>
                     <input type="checkbox" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                     <?php echo $option_value['name']; ?>
@@ -349,6 +281,94 @@ $ans=floor($ans);
             <!-- AddThis Button END -->
           </div>
           <?php } ?>
+        </div>
+        <div class="row">
+<div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+<ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
+            <?php if ($attribute_groups) { ?>
+            <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
+            <?php } ?>
+            <?php if ($review_status) { ?>
+            <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
+            <?php } ?>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
+            <?php if ($attribute_groups) { ?>
+            <div class="tab-pane" id="tab-specification">
+              <table class="table table-bordered">
+                <?php foreach ($attribute_groups as $attribute_group) { ?>
+                <thead>
+                  <tr>
+                    <td colspan="2"><strong><?php echo $attribute_group['name']; ?></strong></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+                  <tr>
+                    <td><?php echo $attribute['name']; ?></td>
+                    <td><?php echo $attribute['text']; ?></td>
+                  </tr>
+                  <?php } ?>
+                </tbody>
+                <?php } ?>
+              </table>
+            </div>
+            <?php } ?>
+            <?php if ($review_status) { ?>
+            <div class="tab-pane" id="tab-review">
+              <form class="form-horizontal">
+                <div id="review"></div>
+                <h2><?php echo $text_write; ?></h2>
+                <?php if ($review_guest) { ?>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
+                    <input type="text" name="name" value="" id="input-name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
+                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                    <div class="help-block"><?php echo $text_note; ?></div>
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label"><?php echo $entry_rating; ?></label>
+                    &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
+                    <input type="radio" name="rating" value="1" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="2" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="3" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="4" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="5" />
+                    &nbsp;<?php echo $entry_good; ?></div>
+                </div>
+                <?php if ($site_key) { ?>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
+                    </div>
+                  </div>
+                <?php } ?>
+                <div class="buttons clearfix">
+                  <div class="pull-right">
+                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
+                  </div>
+                </div>
+                <?php } else { ?>
+                <?php echo $text_login; ?>
+                <?php } ?>
+              </form>
+            </div>
+            <?php } ?>
+          </div></div>
         </div>
       </div>
       <?php if ($products) { ?>
@@ -600,5 +620,17 @@ $(document).ready(function() {
 	});
 });
 //--></script>
+
+<style type="text/css">
+.thumbnails ul li a:hover { margin: 0; padding: 0;}
+.image-additional a,.image-additional a:hover { margin-bottom: 10px;}
+.yhumnails { width: 400px; min-height: 300px; display: inline-block;}
+.rating_1 { margin: 0;}
+@media screen and (max-width:1024px){ 
+.yhumnails { width: auto; height: auto;} 
+.tab-pane { padding: 0 20px;}
+.rating_1 { margin: 20px 0;}
+}
+</style>
 
 <?php echo $footer; ?>
