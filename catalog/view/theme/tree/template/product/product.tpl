@@ -28,18 +28,19 @@
           <?php if ($thumb || $images) { ?>
           <div class="row">
             <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"> 
-            
+            <div class="multizoom1 thumbs">
             <?php foreach ($images as $image) { ?>
             <ul class="thumbnails">
-            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" data-large="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             </ul>
             <?php } ?>
+            </div>
             
           </div>
             <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10">         
             <?php if ($thumb) { ?>
             <ul class="thumbnails">
-            <li><a class="thumbnail yhumnails" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+            <li><a class="thumbnail yhumnails" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img id="multizoom1" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             
           </ul>
           <?php } ?>
@@ -567,6 +568,7 @@ $('button[id^=\'button-upload\']').on('click', function() {
 	}, 500);
 });
 //--></script>
+<script src="<?php echo HTTP_SERVER ?>catalog/view/js/multizoom.js" type="text/javascript"></script>
 <script type="text/javascript"><!--
 $('#review').delegate('.pagination a', 'click', function(e) {
   e.preventDefault();
@@ -609,15 +611,28 @@ $('#button-review').on('click', function() {
 		}
 	});
 });
-
 $(document).ready(function() {
-	$('.thumbnails').magnificPopup({
-		type:'image',
-		delegate: 'a',
-		gallery: {
-			enabled:true
-		}
-	});
+	// $('.thumbnails').magnificPopup({
+	// 	type:'image',
+	// 	delegate: 'a',
+	// 	gallery: {
+	// 		enabled:true
+	// 	}
+	// });
+
+    $('#multizoom1').addimagezoom({ // multi-zoom: options same as for previous Featured Image Zoomer's addimagezoom unless noted as '- new'
+      //descArea: '#description', // description selector (optional - but required if descriptions are used) - new
+      //speed: 1500, // duration of fade in for new zoomable images (in milliseconds, optional) - new
+      //descpos: true, // if set to true - description position follows image position at a set distance, defaults to false (optional) - new
+      imagevertcenter: true, // zoomable image centers vertically in its container (optional) - new
+      //magvertcenter: true, // magnified area centers vertically in relation to the zoomable image (optional) - new
+      zoomrange: [3, 10],
+      magnifiersize: [300,300],
+      magnifierpos: 'right',
+      cursorshadecolor: '#fdffd5',
+      cursorshade: true //<-- No comma after last option!
+  });
+
 });
 //--></script>
 
